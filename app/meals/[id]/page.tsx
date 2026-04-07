@@ -3,8 +3,27 @@ import MealDetail from "@/components/organisms/MealDetail";
 import { fetchApi } from "@/utils/fetchApi";
 import { notFound } from "next/navigation";
 import { MealDetailPageProps } from "@/types";
+import { Metadata } from "next";
 
 
+
+export async function generateMetadata({ params }: MealDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+
+  const res = await fetch(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, {
+    next: { revalidate: 86400 },
+  });
+
+  const data = await res.json();
+  const meal = data.meals?.[0];
+
+  if (!meal) return { title: "Meal Not Found" };
+
+  return {
+    title: `${meal.strMeal} Recipe - Meal App`,
+    description: `Learn how to make ${meal.strMeal}. ${meal.strCategory} cuisine from ${meal.strArea}.`,
+  };
+}
 
 export default async function MealDetailPage({ params }: MealDetailPageProps) {
   const { id } = await params;

@@ -8,15 +8,15 @@ export default function NotFound() {
         Page Not Found
       </div>
       <div className="mt-8">
-        <h2 className="text-2xl font-bold text-zinc-800 mb-4">Ups, halaman tidak ditemukan!</h2>
+        <h2 className="text-2xl font-bold text-zinc-800 mb-4">Oops, page not found!</h2>
         <p className="text-zinc-600 mb-8 max-w-md mx-auto">
-          Maaf, halaman yang Anda cari mungkin telah dihapus, namanya diubah, atau sementara tidak tersedia.
+          Sorry, the page you are looking for might have been removed, renamed, or is temporarily unavailable.
         </p>
         <Link
           href="/"
           className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition duration-300 shadow-sm"
         >
-          Kembali ke Beranda
+          Back to Home
         </Link>
       </div>
     </div>

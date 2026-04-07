@@ -4,7 +4,13 @@ import InfiniteIngredientScroll from "../components/organisms/InfiniteIngredient
 import SearchBar from "../components/molecules/SearchBar";
 import { searchIngredients } from "../utils/searchService";
 import { HomeProps } from "@/types";
+import { Metadata } from "next";
 
+
+export const metadata: Metadata = {
+  title: "Home - Meal App",
+  description: "Search and explore thousands of delicious ingredients and meal recipes.",
+};
 
 export default async function Home({ searchParams }: HomeProps) {
   const { q } = await searchParams;

@@ -3,6 +3,17 @@ import Breadcrumb from "@/components/molecules/Breadcrumb";
 import IngredientDetail from "@/components/organisms/IngredientDetail";
 import { searchMealsByIngredient, getAllAvailableIngredients } from "@/utils/searchService";
 import { IngredientDetailPageProps } from "@/types";
+import { Metadata } from "next";
+
+
+export async function generateMetadata({ params }: IngredientDetailPageProps): Promise<Metadata> {
+  const { name } = await params;
+  const decodedName = decodeURIComponent(name);
+  return {
+    title: `${decodedName} Recipes - Meal App`,
+    description: `Discover delicious recipes using ${decodedName} on Meal App.`,
+  };
+}
 
 export default async function IngredientDetailPage({ params, searchParams }: IngredientDetailPageProps) {
   const { name } = await params;
