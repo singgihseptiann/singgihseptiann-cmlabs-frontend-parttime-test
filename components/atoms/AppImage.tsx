@@ -3,10 +3,9 @@
 import Image, { ImageProps } from "next/image";
 import clsx from "clsx";
 import { useState } from "react";
+import { AppImageProps } from "@/types";
 
-interface AppImageProps extends ImageProps {
-  fallbackSrc?: string;
-}
+
 
 const AppImage: React.FC<AppImageProps> = ({ src, alt, className, fallbackSrc = "/images/fallback.png", ...props }) => {
   const [imgSrc, setImgSrc] = useState<ImageProps["src"]>(src || fallbackSrc);

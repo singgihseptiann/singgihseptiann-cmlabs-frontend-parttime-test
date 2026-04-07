@@ -4,18 +4,9 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import IngredientCardWithImage from "@/components/molecules/IngredientCardWithImage";
 import CardSkeleton from "@/components/molecules/CardSkeleton";
+import { InfiniteIngredientScrollProps, Ingredient } from "@/types";
 
-interface Ingredient {
-  idIngredient: string;
-  strIngredient: string;
-  strThumb: string;
-}
 
-interface InfiniteIngredientScrollProps {
-  initialIngredients: Ingredient[];
-  initialHasMore: boolean;
-  query?: string;
-}
 
 export default function InfiniteIngredientScroll({ initialIngredients, initialHasMore, query }: InfiniteIngredientScrollProps) {
   const [ingredients, setIngredients] = useState<Ingredient[]>(initialIngredients);
@@ -40,7 +31,6 @@ export default function InfiniteIngredientScroll({ initialIngredients, initialHa
       const response = await fetch(`/api/ingredients?${params.toString()}`);
       const data = await response.json();
 
-      console.log("Loaded data:", data);
 
       if (!response.ok) {
         console.error("API error:", data.error);

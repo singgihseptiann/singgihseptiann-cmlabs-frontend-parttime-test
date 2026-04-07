@@ -3,15 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-// Defined outside component — stable reference, no SSR/client mismatch
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/foods", label: "Foods" },
-  { href: "/ingredients", label: "Ingredients" },
-  { href: "/local-culinary", label: "Local Culinary" },
-];
-
 const Navigation: React.FC = () => {
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/foods", label: "Foods" },
+    { href: "/ingredients", label: "Ingredients" },
+    { href: "/local-culinary", label: "Local Culinary" },
+  ];
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -20,18 +19,23 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white backdrop-blur-lg border-b border-zinc-100 sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo — use flex-shrink-0 instead of shrink-0 */}
-          <Link href="/" className="text-xl font-bold text-zinc-800 flex-shrink-0">
-            mealapp
+        <div className="flex justify-between items-center h-16 md:h-20">
+          {/* Logo */}
+          <Link href="/" className="text-2xl font-extrabold flex-shrink-0 tracking-tighter">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">meal</span>
+            <span className="text-zinc-800">app</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex gap-6">
+          <div className="hidden md:flex gap-8 items-center">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-zinc-600 hover:text-zinc-900 transition-colors duration-200">
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-zinc-600 hover:text-orange-600 transition-colors duration-200"
+              >
                 {link.label}
               </Link>
             ))}

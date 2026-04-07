@@ -1,10 +1,6 @@
 import React from "react";
+import { TextProps } from "@/types";
 
-interface TextProps {
-  children: React.ReactNode;
-  className?: string;
-  variant?: "normal" | "muted" | "semibold";
-}
 
 const Text: React.FC<TextProps> = ({ children, className = "", variant = "normal" }) => {
   const variantStyles = {

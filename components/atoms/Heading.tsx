@@ -1,11 +1,8 @@
 import React from "react";
 import clsx from "clsx";
+import { HeadingProps } from "@/types";
 
-interface HeadingProps {
-  level: 1 | 2 | 3 | 4 | 5 | 6;
-  children: React.ReactNode;
-  className?: string;
-}
+
 
 // responsive font sizes
 const responsiveStyles: Record<number, string> = {

@@ -1,10 +1,8 @@
 import React from "react";
 import Heading from "../atoms/Heading";
 import Text from "../atoms/Text";
+import { InstructionsProps } from "@/types";
 
-interface InstructionsProps {
-  instructions: string;
-}
 
 const Instructions: React.FC<InstructionsProps> = ({ instructions }) => (
   <div className="mb-6">

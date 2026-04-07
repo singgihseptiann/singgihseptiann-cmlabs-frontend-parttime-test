@@ -2,10 +2,8 @@ import Breadcrumb from "@/components/molecules/Breadcrumb";
 import MealDetail from "@/components/organisms/MealDetail";
 import { fetchApi } from "@/utils/fetchApi";
 import { notFound } from "next/navigation";
+import { MealDetailPageProps } from "@/types";
 
-interface MealDetailPageProps {
-  params: Promise<{ id: string }>;
-}
 
 export default async function MealDetailPage({ params }: MealDetailPageProps) {
   const { id } = await params;

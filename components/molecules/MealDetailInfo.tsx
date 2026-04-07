@@ -1,11 +1,8 @@
 import React from "react";
-
-interface MealDetailInfoProps {
-  meal: any;
-}
+import { MealDetailInfoProps } from "@/types";
 
 const MealDetailInfo: React.FC<MealDetailInfoProps> = ({ meal }) => (
-  <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+  <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg border border-zinc-100">
     <h1 className="text-3xl font-bold mb-4">{meal.strMeal}</h1>
     <div className="mb-4">
       <p className="text-zinc-600 mb-2">

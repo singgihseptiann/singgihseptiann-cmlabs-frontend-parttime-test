@@ -7,10 +7,7 @@ export async function GET(request: NextRequest) {
   const query = searchParams.get("q") || undefined;
 
   try {
-    console.log(`[API] Fetching ingredients with offset=${offset}, query=${query}`);
     const result = await searchIngredients(query, offset);
-
-    console.log(`[API] Successfully fetched ${result.ingredients.length} ingredients`);
 
     // Ensure result has the correct structure
     return NextResponse.json({

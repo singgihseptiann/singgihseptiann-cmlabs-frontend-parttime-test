@@ -3,10 +3,8 @@ import HeroSection from "../components/organisms/HeroSection";
 import InfiniteIngredientScroll from "../components/organisms/InfiniteIngredientScroll";
 import SearchBar from "../components/molecules/SearchBar";
 import { searchIngredients } from "../utils/searchService";
+import { HomeProps } from "@/types";
 
-interface HomeProps {
-  searchParams: Promise<{ q?: string }>;
-}
 
 export default async function Home({ searchParams }: HomeProps) {
   const { q } = await searchParams;

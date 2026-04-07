@@ -1,31 +1,22 @@
 import { Suspense } from "react";
 import Breadcrumb from "@/components/molecules/Breadcrumb";
 import IngredientDetail from "@/components/organisms/IngredientDetail";
-import { searchMealsByIngredient } from "@/utils/searchService";
-import { notFound } from "next/navigation";
-
-interface IngredientDetailPageProps {
-  params: Promise<{ name: string }>;
-  searchParams: Promise<{ q?: string }>;
-}
+import { searchMealsByIngredient, getAllAvailableIngredients } from "@/utils/searchService";
+import { IngredientDetailPageProps } from "@/types";
 
 export default async function IngredientDetailPage({ params, searchParams }: IngredientDetailPageProps) {
   const { name } = await params;
   const { q } = await searchParams;
-  console.log("Ingredient name from URL:", name);
-  console.log("Search query:", q);
 
-  // Decode the ingredient name if it comes URL-encoded
   const decodedName = decodeURIComponent(name);
-  console.log("Ingredient name from URL:", name);
-  console.log("Decoded ingredient name:", decodedName);
 
-  // Try to find meals for the ingredient directly
-  const meals = await searchMealsByIngredient(decodedName, q);
+  // Cari meals dulu
+  let meals = await searchMealsByIngredient(decodedName, q);
 
-  if (!meals.length) {
-    console.log("No meals found for ingredient:", decodedName);
-    return notFound();
+  // Kalau meals kosong, fallback: ambil semua ingredient
+  let fallbackIngredients = [];
+  if (meals.length === 0) {
+    fallbackIngredients = await getAllAvailableIngredients();
   }
 
   return (
@@ -42,7 +33,20 @@ export default async function IngredientDetailPage({ params, searchParams }: Ing
             },
           ]}
         />
-        <IngredientDetail ingredient={decodedName} meals={meals} searchQuery={q} />
+        {meals.length > 0 ? (
+          <IngredientDetail ingredient={decodedName} meals={meals} searchQuery={q} />
+        ) : (
+          <div>
+            <h2 className="text-xl font-semibold mb-4">All Available Ingredients</h2>
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {fallbackIngredients.map((ing: any) => (
+                <li key={ing.idIngredient} className="border p-2 rounded">
+                  {ing.strIngredient}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </main>
   );

@@ -2,16 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { BreadcrumbProps } from "@/types";
 
-interface BreadcrumbItem {
-  id: string;
-  label: string;
-  href: string;
-}
 
-interface BreadcrumbProps {
-  items: BreadcrumbItem[];
-}
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   const router = useRouter();

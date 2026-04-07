@@ -1,12 +1,10 @@
 import React from "react";
 import YouTubeEmbed from "../atoms/YouTubeEmbed";
+import { VideoRecipeProps } from "@/types";
 
-interface VideoRecipeProps {
-  youtubeUrl: string;
-}
 
 const VideoRecipe: React.FC<VideoRecipeProps> = ({ youtubeUrl }) => (
-  <div className="mb-6">
+  <div className="w-full">
     <YouTubeEmbed videoUrl={youtubeUrl} />
   </div>
 );

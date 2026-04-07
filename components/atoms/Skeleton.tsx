@@ -1,8 +1,5 @@
 import React from "react";
-
-interface SkeletonProps {
-  className?: string;
-}
+import { SkeletonProps } from "@/types";
 
 const Skeleton: React.FC<SkeletonProps> = ({ className = "" }) => <div className={`bg-zinc-200 animate-pulse rounded ${className}`} />;
 

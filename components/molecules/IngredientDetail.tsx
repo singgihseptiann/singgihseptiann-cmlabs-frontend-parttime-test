@@ -1,10 +1,7 @@
 import React from "react";
 import MealList from "./MealList";
+import { IngredientDetailProps } from "@/types";
 
-interface IngredientDetailProps {
-  ingredient: string;
-  meals: any[];
-}
 
 const IngredientDetail: React.FC<IngredientDetailProps> = ({ ingredient, meals }) => (
   <div className="max-w-6xl mx-auto p-6">

@@ -1,8 +1,5 @@
 import React from "react";
-
-interface YouTubeEmbedProps {
-  videoUrl: string;
-}
+import { YouTubeEmbedProps } from "@/types";
 
 const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ videoUrl }) => {
   const videoId = videoUrl.split("v=")[1];
