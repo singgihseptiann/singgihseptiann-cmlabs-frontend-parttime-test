@@ -5,9 +5,16 @@ import { notFound } from "next/navigation";
 import { MealDetailPageProps } from "@/types";
 
 
+export const revalidate = 86400; // Cache this route segment for 24 hours (ISR)
+
 export default async function MealDetailPage({ params }: MealDetailPageProps) {
   const { id } = await params;
-  const res = await fetchApi(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const res = await fetchApi(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, {
+    cache: "force-cache",
+    next: {
+      revalidate: 86400,
+    },
+  });
   const meal = res.data?.meals?.[0];
 
   if (!meal) return notFound();

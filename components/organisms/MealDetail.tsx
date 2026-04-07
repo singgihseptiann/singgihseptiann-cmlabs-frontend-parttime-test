@@ -8,11 +8,11 @@ import { MealDetailProps } from "@/types";
 
 
 const MealDetail: React.FC<MealDetailProps> = ({ meal }) => (
-  <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-xl   rounded-3xl overflow-hidden">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+  <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-xl    overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 space-y-8">
 
       {/* Left side - Image */}
-      <div className="h-[400px] lg:h-[600px] relative w-full overflow-hidden bg-zinc-50">
+      <div className="h-[400px] lg:h-[600px] relative w-full rounded-2xl overflow-hidden bg-zinc-50">
         {meal.strMealThumb ? (
           <AppImage
             src={meal.strMealThumb}
@@ -32,7 +32,7 @@ const MealDetail: React.FC<MealDetailProps> = ({ meal }) => (
       </div>
 
       {/* Right side - Content */}
-      <div className="p-8 md:p-12 lg:p-16 flex flex-col space-y-8 bg-zinc-50/50">
+      <div className=" flex flex-col space-y-8 bg-zinc-50/50">
         <MealMeta category={meal.strCategory} area={meal.strArea} tags={meal.strTags} />
         <div className="h-px bg-zinc-200/60 w-full" />
         <Instructions instructions={meal.strInstructions} />
