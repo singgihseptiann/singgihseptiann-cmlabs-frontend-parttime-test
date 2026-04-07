@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { MealDetailPageProps } from "@/types";
 
 
-export const revalidate = 86400; // Cache this route segment for 24 hours (ISR)
 
 export default async function MealDetailPage({ params }: MealDetailPageProps) {
   const { id } = await params;
