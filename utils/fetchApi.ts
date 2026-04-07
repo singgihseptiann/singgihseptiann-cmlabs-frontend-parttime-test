@@ -1,4 +1,4 @@
-// lib/fetchApi.ts
+
 type FetchConfig = {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: unknown;

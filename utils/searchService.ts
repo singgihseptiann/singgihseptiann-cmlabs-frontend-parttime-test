@@ -1,4 +1,4 @@
-// lib/mealService.ts
+
 import { fetchApi } from "./fetchApi";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -12,8 +12,8 @@ export async function getAllAvailableIngredients() {
   try {
     const res = await fetchApi("http://www.themealdb.com/api/json/v1/1/list.php?i=list", {
       next: {
-        revalidate: 86400, // revalidate every 24 hours
-        tags: ["ingredients"], // lets you call revalidateTag("ingredients") manually
+        revalidate: 86400,
+        tags: ["ingredients"],
       },
     });
 

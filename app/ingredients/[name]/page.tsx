@@ -21,10 +21,8 @@ export default async function IngredientDetailPage({ params, searchParams }: Ing
 
   const decodedName = decodeURIComponent(name);
 
-  // Cari meals dulu
   let meals = await searchMealsByIngredient(decodedName, q);
 
-  // Kalau meals kosong, fallback: ambil semua ingredient
   let fallbackIngredients = [];
   if (meals.length === 0) {
     fallbackIngredients = await getAllAvailableIngredients();
