@@ -30,6 +30,7 @@ const AppImage: React.FC<AppImageProps> = ({ src, alt, className, fallbackSrc = 
         src={imgSrc}
         alt={alt}
         fill
+        sizes={props.sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
         className={clsx("object-cover transition-opacity duration-500", isLoading ? "opacity-0" : "opacity-100", className)}
         onLoad={() => setIsLoading(false)} // replaces deprecated onLoadingComplete
         onError={() => {
